@@ -7,9 +7,11 @@ const Blog = require('../models/Blog');
 
 router.post('/', async (req, res) => {
     try{
-        const blog = new Blog(req.body);
-        const savedBlog = await newBlog.save();
-        res.status(201).json(savedBlog);
+        
+        console.log(req.body);
+        const newBlog = new Blog(req.body);
+        const saveBlog = await newBlog.save();
+        res.status(201).json(saveBlog);
     } catch (err){
         res.status(400).json({error: err.message});   
     }
@@ -37,7 +39,7 @@ router.get('/:id', async(req,res)=>{
         res.status(500).json({error: err.message});
     }
 });
-
+ 
 
 // Update: put , api, blogs, :id
 

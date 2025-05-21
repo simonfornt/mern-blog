@@ -6,20 +6,21 @@ require('dotenv').config();
 const blogRoutes = require('./routes/blogRoutes');
 
 const app = express();
-app.use(express.json());
-app.use('/api/blogs', blogRoutes);
-const PORT = process.env.PORT || 5000;
 
+app.use(cors({
+    origin: 'http://localhost:5173', // frontend url
+    methods: [ 'GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 
 // middleware
 
-app.use(cors());
 app.use(express.json());
 
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
 
+
+
+app.use('/api/blogs', blogRoutes);
 
 //connect to mongoDb
 
@@ -29,6 +30,7 @@ app.use(cors({
 // })
 // .then (()=> console.log('MongoDb connected successfully'))
 // .catch((error) => console.error('MongoDb connections error:', error));
+
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI)
@@ -44,6 +46,8 @@ app.get('/', (req, res) => {
     res.send('Hello from the backend');
 });
 
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () =>{
     console.log(` server is running on http://localhost:${PORT}`)
-})
+});

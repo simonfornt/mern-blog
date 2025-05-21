@@ -17,7 +17,7 @@ const CreateBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/blogs', formData);
+      await axios.post('http://localhost:5000/api/blogs', formData,{withCredentials:true});
       alert('Blog posted successfully!');
       setFormData({
         title: '',
@@ -33,7 +33,7 @@ const CreateBlog = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4 shadow-lg rounded">
+    <form  onSubmit={handleSubmit} className="max-w-lg mx-auto p-4 shadow-lg rounded">
       <h2 className="text-2xl font-bold mb-4">Create New Blog</h2>
 
       <input
