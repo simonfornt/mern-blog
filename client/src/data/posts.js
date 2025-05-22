@@ -1,7 +1,7 @@
 const posts = [
     {
         id:1,
-        title: 'How to learn Mern Stack in 2025',
+        title: 'Mern to learn Mern Stack in 2025',
         content: 'Step-by-step guide to mastering MongoDB, Express, React, and Node.js...',
         author: 'Simon',
         date: '205-05-018',

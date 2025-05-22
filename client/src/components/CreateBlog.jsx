@@ -16,6 +16,7 @@ const CreateBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       await axios.post('http://localhost:5000/api/blogs', formData,{withCredentials:true});
       alert('Blog posted successfully!');
@@ -26,6 +27,7 @@ const CreateBlog = () => {
         date: '',
         image: ''
       });
+
     } catch (err) {
       console.error(err);
       alert('Something went wrong!');
@@ -67,7 +69,7 @@ const CreateBlog = () => {
       />
 
       <input
-        type="text"
+        type="date"
         name="date"
         placeholder="Date (YYYY-MM-DD)"
         value={formData.date}
